@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-// ─── 1. Root path define karo ───────────────────────────────
 define('ROOT_PATH', dirname(__DIR__));
 
-// ─── 2. Autoloader (abhi simple, baad mein Composer) ────────
 spl_autoload_register(function (string $class): void {
     $file = ROOT_PATH . '/app/' . str_replace('\\', '/', $class) . '.php';
     if (file_exists($file)) {
@@ -13,6 +11,17 @@ spl_autoload_register(function (string $class): void {
     }
 });
 
-// ─── 3. Abhi ke liye simple test ────────────────────────────
-echo "<h1>LeadFlow CRM is running!</h1>";
-echo "<p>ROOT_PATH: " . ROOT_PATH . "</p>";
+$router = new \Core\Router();
+
+require_once ROOT_PATH . '/routes/web.php';
+
+// ─── Base path calculate karo ───────────────────────────────
+// SCRIPT_NAME = /leadflow-crm/public/index.php
+// Base path   = /leadflow-crm/public
+$basePath = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
+
+$router->dispatch(
+    $_SERVER['REQUEST_METHOD'],
+    $_SERVER['REQUEST_URI'],
+    $basePath
+);
