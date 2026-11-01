@@ -1,5 +1,5 @@
 <?php
+use Controllers\HomeController;
 
-$router->get('/', function() {
-    echo "<h1>Welcome to LeadFlow CRM!</h1>";
-});
+$router->get('/', [HomeController::class, 'index']);
+
