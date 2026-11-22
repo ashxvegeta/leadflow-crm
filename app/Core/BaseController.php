@@ -21,4 +21,11 @@ class BaseController
 
         require_once $viewPath;
     }
+
+    protected function redirect(string $path): void
+    {
+    header('Location: ' . BASE_URL . $path);
+    exit;
+    }
+
 }
