@@ -15,7 +15,7 @@ class AuthController extends BaseController
     {
         // Pehle se logged in hai toh dashboard pe bhejo
         if (Auth::check()) {
-            $this->redirect('/login');
+            $this->redirect('/');
             exit;
         }
 
