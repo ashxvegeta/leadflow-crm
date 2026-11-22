@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($title) ?></title>
-</head>
-<body>
-    <h1><?= htmlspecialchars($title) ?></h1>
-    <p><?= htmlspecialchars($message) ?></p>
-</body>
-</html>
+<?php require ROOT_PATH . '/resources/views/layouts/header.php'; ?>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4>Welcome, <?= htmlspecialchars(\Core\Auth::user()['name']) ?> 👋</h4>
+        <p class="text-muted mb-0"><?= htmlspecialchars($message) ?></p>
+    </div>
+</div>
+
+<?php require ROOT_PATH . '/resources/views/layouts/footer.php'; ?>
