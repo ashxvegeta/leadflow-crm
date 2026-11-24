@@ -24,7 +24,7 @@ class AuthController extends BaseController
         $this->render('auth/login', [
             'error'      => $_SESSION['flash_error'] ?? null,
             'old_email'  => $_SESSION['old_email']   ?? null,
-            'csrf_token' => '',
+            
         ]);
 
         // Flash messages clear karo
@@ -83,7 +83,7 @@ class AuthController extends BaseController
 
         // ─── Login karo ──────────────────────────────────────
         Auth::login($user);
-        $this->redirect('/login');
+       $this->redirect('/');
         exit;
     }
 

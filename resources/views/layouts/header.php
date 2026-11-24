@@ -30,10 +30,18 @@
                     <?= htmlspecialchars($currentUser['name']) ?>
                     <span class="badge bg-light text-primary"><?= htmlspecialchars($currentUser['role']) ?></span>
                 </span>
-                <a class="btn btn-outline-light btn-sm" href="<?= BASE_URL ?>/logout">Logout</a>
+                <form method="POST" action="<?= BASE_URL ?>/logout" class="d-inline">
+    <?= \Core\Csrf::field() ?>
+    <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
+</form>
             <?php endif; ?>
         </div>
     </div>
 </nav>
 
-<main class="container py-4">
+<?php foreach (\Core\Flash::pull() as $type => $message): ?>
+    <div class="alert alert-<?= htmlspecialchars($type) ?> alert-dismissible fade show">
+        <?= htmlspecialchars($message) ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<?php endforeach; ?>

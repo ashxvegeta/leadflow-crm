@@ -20,6 +20,10 @@ class Router
 
 public function dispatch(string $method, string $uri, string $basePath = ''): void
 {
+
+    if ($method === 'POST') {
+        Csrf::verify();
+    }
     // Query string hata do
     $uri = strtok($uri, '?');
 

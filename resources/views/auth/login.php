@@ -26,7 +26,7 @@
 
                     <form method="POST" action="">
                         <!-- CSRF token (baad mein implement karenge) -->
-                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token ?? '') ?>">
+                        <?= \Core\Csrf::field() ?>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>

@@ -28,4 +28,24 @@ class BaseController
     exit;
     }
 
+    protected function requireAuth(): void
+    {
+        if (!Auth::check()) {
+            $this->redirect('/login');
+        }
+    }
+
+
+    
+    protected function requireAdmin(): void
+    {
+        $this->requireAuth();
+
+        if (!Auth::isAdmin()) {
+            http_response_code(403);
+            echo '<h1>403 — Access denied</h1>';
+            exit;
+        }
+    }
+
 }
