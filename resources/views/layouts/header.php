@@ -38,7 +38,7 @@
         </div>
     </div>
 </nav>
-
+<main class="container py-4">
 <?php foreach (\Core\Flash::pull() as $type => $message): ?>
     <div class="alert alert-<?= htmlspecialchars($type) ?> alert-dismissible fade show">
         <?= htmlspecialchars($message) ?>
